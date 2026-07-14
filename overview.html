@@ -131,46 +131,36 @@
         }
 
         /* ========================================================= */
-        /* ===== หน้ารูปภาพแบบเต็มความกว้าง (ปรับปรุงใหม่) ===== */
+        /* ===== หน้ารูปภาพ แบบเต็มความกว้างอย่างเดียว (ไม่มีข้อจำกัดด้านสูง) ===== */
         /* ========================================================= */
 
         .fullpage-section {
             width: 100%;
-            min-height: 100vh;
+            background: #0b1421;
+            /* พื้นหลังสีเข้ม */
+            padding: 0;
+            /* ไม่มีขอบด้านข้าง */
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            /* จัดชิดบน */
-            background: #0b1421;
-            padding: 0;
-            position: relative;
         }
 
-        /* รูปภาพขยายเต็มความกว้าง */
+        /* รูปภาพ: กว้างเต็ม 100% เสมอ ไม่จำกัดความสูง */
         .fullpage-section img {
             width: 100%;
-            /* กว้างเต็ม 100% ของหน้าจอ */
             height: auto;
-            /* สูงอัตโนมัติตามสัดส่วน */
-            max-height: 92vh;
-            /* ไม่เกิน 92% ของหน้าจอ เพื่อให้มีที่ว่างสำหรับข้อความด้านล่าง */
-            object-fit: contain;
-            /* รักษาสัดส่วน */
-            object-position: center;
+            /* ปล่อยให้สูงตามสัดส่วนของภาพ */
             display: block;
             background: #0b1421;
-            flex-shrink: 0;
         }
 
         /* ===== ส่วนแสดงหมายเลขหน้าและคำอธิบาย (แยกจากรูป) ===== */
         .page-footer {
             width: 100%;
             background: #0b1421;
-            padding: 18px 20px 25px;
+            padding: 20px 20px 30px;
             text-align: center;
             border-top: 3px solid rgba(255, 255, 255, 0.1);
-            flex-shrink: 0;
         }
 
         .page-footer .page-label {
@@ -199,7 +189,7 @@
         .page-footer .page-desc {
             color: #8aa3c9;
             font-size: 16px;
-            margin-top: 6px;
+            margin-top: 8px;
             letter-spacing: 0.5px;
         }
 
@@ -240,10 +230,6 @@
                 font-size: 15px;
             }
 
-            .fullpage-section img {
-                max-height: 80vh;
-            }
-
             .page-footer .page-label {
                 font-size: 15px;
                 padding: 6px 20px;
@@ -260,9 +246,6 @@
         }
 
         @media (max-width: 500px) {
-            .fullpage-section img {
-                max-height: 75vh;
-            }
             .page-footer .page-label {
                 font-size: 13px;
                 padding: 5px 14px;
@@ -330,7 +313,7 @@
     </section>
 
     <!-- ========================================================= -->
-    <!-- หน้ารูปภาพเต็มความกว้าง ทั้ง 3 หน้า (ปรับปรุงใหม่)         -->
+    <!-- หน้ารูปภาพเต็มความกว้าง (ไม่มีข้อจำกัดด้านสูง)              -->
     <!-- ========================================================= -->
 
     <!-- PAGE 2 -->
