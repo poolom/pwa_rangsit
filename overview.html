@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS416 PABX - Features & Overview</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7fc;
+            color: #1e2a41;
+        }
+
+        /* ===== หน้าแรก (Features) ===== */
+        .features-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 30px 60px;
+        }
+
+        .features-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #0057a3;
+            padding-bottom: 15px;
+        }
+        .features-header h1 {
+            font-size: 36px;
+            color: #0057a3;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .features-header h1 small {
+            font-size: 18px;
+            font-weight: 400;
+            color: #3d4e6b;
+        }
+        .badge {
+            background: #ffb347;
+            color: #1e2a41;
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Grid คุณสมบัติ */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 14px 20px;
+            background: white;
+            border-radius: 30px;
+            padding: 30px 35px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e6edf5;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 17px;
+            padding: 8px 6px;
+            border-bottom: 1px dashed #eef3f9;
+        }
+        .feature-item .icon {
+            font-size: 22px;
+            min-width: 32px;
+            text-align: center;
+            color: #0057a3;
+        }
+        .feature-item .text {
+            font-weight: 500;
+        }
+        .feature-item .sub {
+            font-weight: 400;
+            color: #5b6f8c;
+            font-size: 15px;
+            margin-left: 4px;
+        }
+
+        /* ===== ปุ่มนำทางไปรูปภาพ ===== */
+        .nav-pages {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 40px auto 20px;
+            padding: 0 20px;
+        }
+        .nav-pages a {
+            background: white;
+            border: 2px solid #d0dceb;
+            border-radius: 60px;
+            padding: 14px 32px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e2a41;
+            text-decoration: none;
+            transition: 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+        }
+        .nav-pages a:hover {
+            border-color: #0057a3;
+            background: #f0f7ff;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0,87,163,0.10);
+        }
+        .nav-pages a .page-num {
+            background: #0057a3;
+            color: white;
+            border-radius: 40px;
+            padding: 0 14px;
+            font-size: 15px;
+            line-height: 30px;
+        }
+
+        /* ===== หน้ารูปภาพเต็มจอ ===== */
+        .fullpage-section {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #0b1421;
+            padding: 20px;
+            position: relative;
+        }
+        .fullpage-section img {
+            max-width: 100%;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+            background: white;
+            padding: 10px;
+        }
+        .fullpage-section .caption {
+            color: #b0c9e8;
+            font-size: 20px;
+            margin-top: 20px;
+            letter-spacing: 1px;
+            background: rgba(255,255,255,0.06);
+            padding: 8px 30px;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+        }
+        .fullpage-section .back-link {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(8px);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 14px 28px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            font-size: 17px;
+            z-index: 10;
+        }
+        .fullpage-section .back-link:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 700px) {
+            .features-header h1 { font-size: 26px; }
+            .features-grid { padding: 20px; }
+            .feature-item { font-size: 15px; }
+            .nav-pages a { padding: 10px 20px; font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================================= -->
+    <!-- หน้าแรก: FEATURES                                          -->
+    <!-- ========================================================= -->
+    <section class="features-section" id="home">
+        <div class="features-header">
+            <h1>
+                📋 CS416 PABX
+                <small>คุณสมบัติหลัก</small>
+            </h1>
+            <span class="badge">Features</span>
+        </div>
+
+        <div class="features-grid">
+            <!-- รายการคุณสมบัติทั้งหมด ตามที่คุณให้มา -->
+            <div class="feature-item"><span class="icon">🔄</span><span class="text">Operator / Auto-attendant work mode</span></div>
+            <div class="feature-item"><span class="icon">🎙️</span><span class="text">OGM (Outgoing Message, DISA:180s)</span></div>
+            <div class="feature-item"><span class="icon">📞</span><span class="text">Caller ID <span class="sub">(operator ringing ext, intercom, transfer)</span></span></div>
+            <div class="feature-item"><span class="icon">↪️</span><span class="text">Call transfer</span></div>
+            <div class="feature-item"><span class="icon">🔀</span><span class="text">Call forward</span></div>
+            <div class="feature-item"><span class="icon">📥</span><span class="text">Call pickup</span></div>
+            <div class="feature-item"><span class="icon">🚫</span><span class="text">Call restriction</span></div>
+            <div class="feature-item"><span class="icon">📌</span><span class="text">C.O line booking</span></div>
+            <div class="feature-item"><span class="icon">📌</span><span class="text">C.O line reservation</span></div>
+            <div class="feature-item"><span class="icon">🔢</span><span class="text">Ext number flexible coding</span></div>
+            <div class="feature-item"><span class="icon">📤</span><span class="text">Outgoing call transfer</span></div>
+            <div class="feature-item"><span class="icon">🏠</span><span class="text">Internal hotline</span></div>
+            <div class="feature-item"><span class="icon">🎵</span><span class="text">Music on hold</span></div>
+            <div class="feature-item"><span class="icon">🔇</span><span class="text">Do not Disturb (DND)</span></div>
+            <div class="feature-item"><span class="icon">📇</span><span class="text">Multiple Dial out mode</span></div>
+            <div class="feature-item"><span class="icon">👥</span><span class="text">Three party conference</span></div>
+            <div class="feature-item"><span class="icon">⚡</span><span class="text">Abbreviated dialing <span class="sub">(Memory dialing)</span></span></div>
+            <div class="feature-item"><span class="icon">🔒</span><span class="text">Extension Dynamic Lock</span></div>
+            <div class="feature-item"><span class="icon">🧠</span><span class="text">Intelligent routing (LCR)</span></div>
+            <div class="feature-item"><span class="icon">👥</span><span class="text">Extension group</span></div>
+            <div class="feature-item"><span class="icon">🚀</span><span class="text">Fast dial Ext. in OGM mode</span></div>
+            <div class="feature-item"><span class="icon">💻</span><span class="text">Remote programming</span></div>
+            <div class="feature-item"><span class="icon">🔌</span><span class="text">Power failure transfer</span></div>
+            <div class="feature-item"><span class="icon">📞</span><span class="text">Programming by normal phone <span class="sub">(no special key phone)</span></span></div>
+            <div class="feature-item"><span class="icon">🚪</span><span class="text">Door phone &amp; door opener</span></div>
+            <div class="feature-item"><span class="icon">🔋</span><span class="text">Backup battery option</span></div>
+        </div>
+
+        <!-- ปุ่มนำทางไปยังรูปภาพ -->
+        <div class="nav-pages">
+            <a href="#page2">
+                <span class="page-num">2</span> ภาพที่ 1
+            </a>
+            <a href="#page3">
+                <span class="page-num">3</span> ภาพที่ 2
+            </a>
+            <a href="#page4">
+                <span class="page-num">4</span> ภาพที่ 3
+            </a>
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- หน้ารูปภาพเต็มจอ ทั้ง 3 หน้า                                -->
+    <!-- ========================================================= -->
+
+    <!-- PAGE 2 -->
+    <section class="fullpage-section" id="page2">
+        <img src="page2.png" alt="CS416 Overview - หน้า 2" />
+        <div class="caption">📸 หน้า 2 – ภาพรวมระบบ CS416</div>
+        <a href="#home" class="back-link">⬅ กลับหน้า Features</a>
+    </section>
+
+    <!-- PAGE 3 -->
+    <section class="fullpage-section" id="page3">
+        <img src="page3.png" alt="CS416 Overview - หน้า 3" />
+        <div class="caption">📸 หน้า 3 – การตั้งค่าและการใช้งาน</div>
+        <a href="#home" class="back-link">⬅ กลับหน้า Features</a>
+    </section>
+
+    <!-- PAGE 4 -->
+    <section class="fullpage-section" id="page4">
+        <img src="page4.png" alt="CS416 Overview - หน้า 4" />
+        <div class="caption">📸 หน้า 4 – ตัวอย่างการต่อสายและไดอะแกรม</div>
+        <a href="#home" class="back-link">⬅ กลับหน้า Features</a>
+    </section>
+
+</body>
+</html>
