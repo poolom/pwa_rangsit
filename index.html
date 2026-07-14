@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เอกสารพรีเซ็นต์ - การตั้งค่าตู้ PABX</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .slide {
+            width: 90%;
+            max-width: 1100px;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            padding: 40px 50px;
+            margin-bottom: 40px;
+            transition: 0.3s;
+            border-left: 10px solid #0057a3;
+        }
+
+        .slide-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0057a3;
+            border-bottom: 4px solid #ffb347;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .slide-title span {
+            background: #0057a3;
+            color: white;
+            font-size: 20px;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .icon-box {
+            background: #f8faff;
+            border-radius: 30px;
+            padding: 25px 15px;
+            text-align: center;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+            border: 1px solid #e9edf4;
+        }
+
+        .icon-box .emoji-big {
+            font-size: 80px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .icon-box h4 {
+            color: #1e2a41;
+            font-size: 20px;
+        }
+
+        .icon-box p {
+            color: #3d4e6b;
+            font-size: 16px;
+        }
+
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            margin-bottom: 18px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: #f7f9fc;
+            padding: 15px 20px;
+            border-radius: 60px;
+            border: 1px solid #dce3ed;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            background: #0057a3;
+            color: white;
+            font-weight: bold;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .code-block {
+            background: #1e2a41;
+            color: #a5d6ff;
+            font-family: 'Courier New', monospace;
+            font-size: 20px;
+            padding: 15px 25px;
+            border-radius: 60px;
+            display: inline-block;
+            letter-spacing: 1.5px;
+            margin: 5px 0;
+            border: 2px solid #ffb347;
+        }
+
+        .code-block small {
+            color: #b0c4de;
+            font-size: 16px;
+            font-family: 'Segoe UI', sans-serif;
+            margin-left: 12px;
+        }
+
+        .tag {
+            background: #ffb347;
+            color: #1e2a41;
+            font-weight: bold;
+            padding: 4px 15px;
+            border-radius: 30px;
+            font-size: 14px;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+
+        th {
+            background: #0057a3;
+            color: white;
+            padding: 14px 10px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover td {
+            background: #f1f6fd;
+        }
+
+        .note-box {
+            background: #fff9eb;
+            border-left: 8px solid #ffb347;
+            padding: 20px 25px;
+            border-radius: 20px;
+            margin: 25px 0 10px 0;
+        }
+
+        .phone-icon {
+            font-size: 100px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 768px) {
+            .slide { padding: 25px; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .grid-3 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SLIDE 1: TITLE -->
+    <div class="slide">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <div style="background: #0057a3; color: white; display: inline-block; padding: 5px 20px; border-radius: 30px; font-size: 14px; letter-spacing: 2px;">PABX SYSTEM</div>
+                <h1 style="font-size: 48px; margin: 15px 0 5px 0; color: #1e2a41;">คู่มือการตั้งค่าตู้ PABX</h1>
+                <p style="font-size: 22px; color: #3d4e6b;">ขั้นตอนการกำหนดค่า Operator & Auto-Attendant</p>
+                <div style="margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
+                    <span style="background: #e9edf4; padding: 8px 20px; border-radius: 30px;">📍 เครื่อง Operator 601</span>
+                    <span style="background: #e9edf4; padding: 8px 20px; border-radius: 30px;">🔑 รหัส: #*0000</span>
+                </div>
+            </div>
+            <div class="phone-icon" style="font-size: 120px;">📞</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: การเข้าสู่โหมด Programming -->
+    <div class="slide">
+        <div class="slide-title"><span>1</span> ขั้นตอนเข้าโหมด Programming</div>
+        <div class="grid-2">
+            <div>
+                <ul class="step-list">
+                    <li>ยกหูโทรศัพท์ <span style="font-size: 30px; margin-left: auto;">📞</span></li>
+                    <li>กด <span class="code-block">#*0000</span> <small>(รหัสผ่าน)</small></li>
+                    <li>ได้ยินเสียง <span style="background: #d4edda; padding: 5px 20px; border-radius: 30px;">🔊 ตื๊ด</span> พร้อมใช้งาน</li>
+                </ul>
+                <div style="margin-top: 20px; background: #e6f2ff; padding: 15px 20px; border-radius: 20px;">
+                    <span style="font-weight: bold;">📍 ต้องทำที่เครื่อง Operator (ช่อง 601) เท่านั้น</span>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <div style="font-size: 90px;">📞</div>
+                <div style="display: flex; gap: 30px; font-size: 50px;">
+                    <!--<span>⬆️</span> <span style="color: #ffb347;">🔑</span> <span>📲</span>-->
+                </div>
+                <p style="background: #1e2a41; color: white; padding: 12px 25px; border-radius: 60px;"># * 0 0 0 0</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: Factory Reset -->
+    <div class="slide">
+        <div class="slide-title"><span>2</span> การคืนค่าโรงงาน (Factory Reset)</div>
+        <div class="grid-2">
+            <div>
+                <ul class="step-list">
+                    <li>ยกหูโทรศัพท์ (ที่ 601)</li>
+                    <li>กด <span class="code-block">#*0000</span> เข้าโหมด</li>
+                    <li>กด <span class="code-block" style="background: #b22234; color: white;">0000#</span> <span class="tag">⚠️ รีเซ็ต</span></li>
+                    <li>รอระบบ <span style="font-weight: bold; color: #0057a3;">Restart</span> อัตโนมัติ</li>
+                </ul>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 80px;">🔄</div>
+                <p style="font-size: 20px; color: #b22234; font-weight: bold;">คืนค่าทุกอย่างกลับเป็นโรงงาน</p>
+                <!--<div style="background: #f8f9fa; border-radius: 30px; padding: 15px; margin-top: 10px;">
+                    <span style="font-size: 30px;">⏳</span> รอจนกว่าหน้าจอจะขึ้นปกติ
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: ตั้งค่าสายนอก -->
+    <div class="slide">
+        <div class="slide-title"><span>3</span> เปิด-ปิด สายภายนอก (CO Line)</div>
+        <div class="grid-2">
+            <div>
+                <div style="background: #f0f4fa; padding: 15px; border-radius: 20px; margin-bottom: 10px;">
+                    <span class="code-block">0610#</span> <small>ปิดสายทั้งหมด</small>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div><span class="code-block">0601#</span> <small>เปิดสายที่ 1</small> <span style="font-size: 25px;">✅</span></div>
+                    <div><span class="code-block">0602#</span> <small>เปิดสายที่ 2</small> <span style="font-size: 25px;">✅</span></div>
+                    <div><span class="code-block">0603#</span> <small>เปิดสายที่ 3</small> <span style="font-size: 25px;">✅</span></div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
+                <div style="text-align: center;"><span style="font-size: 50px;">📞</span><br>สาย 1</div>
+                <div style="text-align: center;"><span style="font-size: 50px;">📞</span><br>สาย 2</div>
+                <div style="text-align: center;"><span style="font-size: 50px;">📞</span><br>สาย 3</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: Auto-Attendant + อัดเสียง -->
+    <div class="slide">
+        <div class="slide-title"><span>4</span> ระบบตอบรับอัตโนมัติ (Auto-Attendant)</div>
+        <div class="grid-2">
+            <div>
+                <p><span class="code-block">10#</span> เปิดโหมด Auto-Attendant</p>
+                <div style="background: #f2f7ff; padding: 15px; border-radius: 20px; margin: 15px 0;">
+                    <h4>🎙️ อัดเสียง</h4>
+                    <p><span class="code-block">1219#</span> เสียงที่ 1 (กลางวัน) <span style="font-size: 25px;">☀️</span></p>
+                    <p><span class="code-block">1249#</span> เสียงที่ 4 (กลางคืน) <span style="font-size: 25px;">🌙</span></p>
+                    <p style="font-size: 14px; color: gray;">* อัดเสร็จให้วางหูทันที</p>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <div><span class="code-block">131#</span> ฟังเสียงที่ 1</div>
+                    <div><span class="code-block">134#</span> ฟังเสียงที่ 4</div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 70px;">🎤</div>
+                <div style="background: #1e2a41; color: white; border-radius: 60px; padding: 12px; margin: 10px 0;">
+                    <span class="code-block" style="background: transparent; color: #ffb347;">0452#</span> เลือก OGM Mode 2
+                </div>
+                <p style="font-size: 15px;">Day = เสียงที่ 1 / Night = เสียงที่ 4</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: การโอนฉุกเฉิน + บัสซี่ -->
+    <div class="slide">
+        <div class="slide-title"><span>5</span> การโอนสายอัตโนมัติกรณีต่างๆ ดังนี้</div>
+        <div class="grid-3">
+            <div class="icon-box"><span class="emoji-big">⏰</span><h4>ไม่กดหมายเลข</h4><p><span class="code-block">161#</span><br>โอนเข้า Operator</p></div>
+            <div class="icon-box"><span class="emoji-big">🚫</span><h4>สายไม่ว่าง (Busy)</h4><p><span class="code-block">1650#</span><br>โอนเข้า Operator</p></div>
+            <div class="icon-box"><span class="emoji-big">📭</span><h4>ไม่มีผู้รับสาย</h4><p><span class="code-block">1660#</span><br>โอนเข้า Operator</p></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7: การจัดการสายติด (ช่องเสียงเดียว) -->
+    <div class="slide">
+        <div class="slide-title"><span>6</span> การจัดการเมื่อช่องเสียงไม่ว่าง</div>
+        <div class="note-box">
+            <span style="font-size: 30px;">⚠️</span> <strong>ข้อจำกัด:</strong> อุปกรณ์มีช่องเสียงตอบรับเพียง 1 ช่อง
+        </div>
+        <div class="grid-2">
+            <div style="background: #eef2f7; border-radius: 30px; padding: 20px;">
+                <span class="code-block">1540#</span> <span class="tag">ค่าโรงงาน</span>
+                <p style="margin-top: 10px;">🔇 ไม่ดังไปไหน → ผู้โทรได้ยินเสียงรอสาย</p>
+            </div>
+            <div style="background: #dff0fa; border-radius: 30px; padding: 20px; border: 2px solid #0057a3;">
+                <span class="code-block">1541#</span> <span class="tag" style="background: #0057a3; color: white;">แนะนำ</span>
+                <p style="margin-top: 10px;">📞 โอนไป Operator ทันที (ถ้าไม่ว่าง → เงื่อนไขอื่น → รอสาย)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8: เปลี่ยนหมายเลขภายใน -->
+    <div class="slide">
+        <div class="slide-title"><span>7</span> เปลี่ยนหมายเลขเครื่อง (Extension)</div>
+        <div class="grid-2">
+            <div>
+                <div style="background: #f0f4fa; padding: 20px; border-radius: 30px; margin-bottom: 15px;">
+                    <span class="code-block">901102#</span> 
+                    <span style="font-size: 25px;">➡️</span> 
+                    <span style="background: #1e2a41; color: white; padding: 5px 20px; border-radius: 30px;">601 → 102</span>
+                </div>
+                <div style="background: #f0f4fa; padding: 20px; border-radius: 30px;">
+                    <span class="code-block">902101#</span> 
+                    <span style="font-size: 25px;">➡️</span> 
+                    <span style="background: #1e2a41; color: white; padding: 5px 20px; border-radius: 30px;">602 → 101</span>
+                </div>
+            </div>
+            <div style="text-align: center; font-size: 40px;">
+                <div>601 ➡️ 102</div>
+                <div style="margin: 10px 0;">602 ➡️ 101</div>
+                <!--<div style="font-size: 20px; background: #ffb347; border-radius: 60px; padding: 8px;">เปลี่ยนรหัสภายใน</div>-->
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 9: การตั้งค่าโอนสายไขว้ (ไม่ต้องเข้าโปรแกรม) -->
+    <div class="slide">
+        <div class="slide-title"><span>8</span> โอนสายไขว้ระหว่าง Operator (ไม่ต้องเข้า Programming)</div>
+        <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
+            <div style="background: #e3f0ff; border-radius: 40px; padding: 25px 35px; text-align: center; flex: 1;">
+                <div style="font-size: 70px;">📞 #82102</div>
+                <h3 style="margin: 10px 0;">ทำที่เครื่อง 101</h3>
+                <p>ตั้งค่าโอนสายไป <strong>102</strong> เมื่อ 101 ไม่รับสาย</p>
+            </div>
+            <div style="background: #e3f0ff; border-radius: 40px; padding: 25px 35px; text-align: center; flex: 1;">
+                <div style="font-size: 70px;">📞 #82101</div>
+                <h3 style="margin: 10px 0;">ทำที่เครื่อง 102</h3>
+                <p>ตั้งค่าโอนสายไป <strong>101</strong> เมื่อ 102 ไม่รับสาย</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 20px; background: #f8f9fa; padding: 15px; border-radius: 60px;">
+            <span style="font-size: 30px;">🔄</span> ไขว้กันระหว่าง Operator 1 และ Operator 2
+        </div>
+    </div>
+
+    <!-- SLIDE 10: สรุปคำสั่ง Quick Reference -->
+    <div class="slide">
+        <div class="slide-title"><span>📋</span> สรุปคำสั่งลัด (Quick Reference)</div>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>หมวดหมู่</th><th>คำสั่ง</th><th>คำอธิบาย</th></tr></thead>
+                <tbody>
+                    <tr><td>เข้าโปรแกรม</td><td><code>#*0000</code></td><td>ยกหูที่ 601</td></tr>
+                    <tr><td>รีเซ็ต</td><td><code>0000#</code></td><td>Factory Reset</td></tr>
+                    <tr><td>เปิดสายนอก</td><td><code>0601#, 0602#, 0603#</code></td><td>เปิดใช้งานสาย 1, 2, 3</td></tr>
+                    <tr><td>Auto-Attendant</td><td><code>10#</code></td><td>เปิดระบบตอบรับ</td></tr>
+                    <tr><td>อัดเสียงกลางวัน</td><td><code>1219#</code></td><td>เสียงที่ 1</td></tr>
+                    <tr><td>อัดเสียงกลางคืน</td><td><code>1249#</code></td><td>เสียงที่ 4</td></tr>
+                    <tr><td>โอนอัตโนมัติตามเงื่อนไข</td><td><code>161# , 1650# , 1660#</code></td><td>โอนเข้า Operator</td></tr>
+                    <tr><td>ช่องเสียงตอบรับไม่ว่าง</td><td><code>1541#</code></td><td>โอนไป Operator ทันที</td></tr>
+                    <tr><td>เปลี่ยนเบอร์</td><td><code>901102#</code></td><td>601 → 102</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- SLIDE 11: หมายเหตุปิดท้าย -->
+    <div class="slide" style="border-left-color: #ffb347;">
+        <div style="display: flex; align-items: center; gap: 25px; flex-wrap: wrap;">
+            <div style="font-size: 80px;">🎯</div>
+            <div>
+                <h2 style="color: #1e2a41;">หมายเหตุสำคัญ</h2>
+                <ul style="font-size: 20px; list-style: none; padding: 0;">
+                    <li style="padding: 8px 0;">✔️ ต้องทำที่เครื่อง <strong>Operator 601</strong> เท่านั้น</li>
+                    <li style="padding: 8px 0;">✔️ อัดเสียงต้องเล่นจนจบ <strong>แล้ววางหูทันที</strong></li>
+                    <li style="padding: 8px 0;">✔️ การโอนไขว้ <strong>ไม่ต้อง</strong> เข้าโหมด Programming</li>
+                    <!--<li style="padding: 8px 0;">✔️ หากไฟล์เสียงไม่สมบูรณ์ ให้อัดใหม่โดยวางหูหลังเสียงจบ</li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
